@@ -1,0 +1,59 @@
+# =========================
+# PYTHON
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.swp
+*.tmp
+*.log
+
+# Virtual envs
+venv/
+env/
+ENV/
+.venv/
+.poetry/
+
+# =========================
+# ENV + SECRET FILES
+# =========================
+.env
+*.env
+.env.*
+!.env.example        # але залишаємо шаблон
+
+# =========================
+# DOCKER
+# =========================
+# Docker build artifacts
+*.pid
+*.seed
+*.bak
+*.backup
+
+# Ignore docker-compose override files (локальні)
+docker-compose.override.yml
+docker-compose.local.yml
+docker-compose.yml
+
+# =========================
+# IDE / EDITOR
+# =========================
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm / JetBrains
+.idea/
+
+# =========================
+# OS FILES
+# =========================
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Mac
+.DS_Store
