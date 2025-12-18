@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Scrape quotes.toscrape.com</h1>
+  <form method="post">
+    {% csrf_token %}
+    <p>Press button to start scraping all pages and add quotes to DB.</p>
+    <button type="submit">Start scraping</button>
+  </form>
+{% endblock %}

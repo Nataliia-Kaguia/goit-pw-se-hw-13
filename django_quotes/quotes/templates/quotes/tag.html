@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Tag: {{ tag.name }}</h1>
+  {% for quote in quotes %}
+    <div class="quote">
+      <p>{{ quote.text }}</p>
+      <p>— <a href="{% url 'author_detail' quote.author.pk %}">{{ quote.author.name }}</a></p>
+    </div>
+  {% endfor %}
+
+  <div class="pagination">
+    {% if quotes.has_previous %}
+      <a href="?page={{ quotes.previous_page_number }}">Previous</a>
+    {% endif %}
+    <span> Page {{ quotes.number }} of {{ quotes.paginator.num_pages }} </span>
+    {% if quotes.has_next %}
+      <a href="?page={{ quotes.next_page_number }}">Next</a>
+    {% endif %}
+  </div>
+{% endblock %}

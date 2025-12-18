@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Quotes</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:20px}
+    nav a{margin-right:10px}
+    .sidebar{float:right;width:220px}
+    .content{margin-right:240px}
+    .quote{border-bottom:1px solid #ddd;padding:10px 0}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{% url 'index' %}">Home</a>
+    {% if user.is_authenticated %}
+      <a href="{% url 'add_quote' %}">Add quote</a>
+      <a href="{% url 'add_author' %}">Add author</a>
+      <a href="{% url 'scrape_quotes' %}">Scrape</a>
+      <form method="post" action="{% url 'logout' %}" style="display:inline;">
+  {% csrf_token %}
+  <button type="submit">Logout</button>
+</form>
+      <span>({{ user.username }})</span>
+    {% else %}
+      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'signup' %}">Signup</a>
+    {% endif %}
+  </nav>
+  <hr>
+  <div class="sidebar">
+    <h3>Top tags</h3>
+    <ul>
+      {% for tag in top_tags %}
+        <li><a href="{% url 'tag_detail' tag.name %}">{{ tag.name }}</a> ({{ tag.cnt }})</li>
+      {% empty %}
+        <li>No tags</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="content">
+    {% if messages %}
+      {% for m in messages %}
+        <div style="padding:8px;background:#f0f0f0;margin-bottom:10px">{{ m }}</div>
+      {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

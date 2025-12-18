@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{{ author.name }}</h1>
+  <p>{{ author.born_date }} — {{ author.born_location }}</p>
+  <p>{{ author.description }}</p>
+
+  <h3>Quotes by {{ author.name }}</h3>
+  {% for quote in quotes %}
+    <div class="quote">
+      <p>{{ quote.text }}</p>
+      <p>Tags:
+        {% for tag in quote.tags.all %}
+          <a href="{% url 'tag_detail' tag.name %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+        {% empty %}
+          (no tags)
+        {% endfor %}
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="pagination">
+    {% if quotes.has_previous %}
+      <a href="?page={{ quotes.previous_page_number }}">Previous</a>
+    {% endif %}
+    <span> Page {{ quotes.number }} of {{ quotes.paginator.num_pages }} </span>
+    {% if quotes.has_next %}
+      <a href="?page={{ quotes.next_page_number }}">Next</a>
+    {% endif %}
+  </div>
+{% endblock %}
