@@ -23,5 +23,6 @@ if __name__ == '__main__':
 
 
 # poetry run python manage.py runserver
-# cd goit-pw-se-hw-10
+# cd django_quotes
 # використовувати python - 3.12
+# Поміняла pyproject.toml → запускаю poetry lock

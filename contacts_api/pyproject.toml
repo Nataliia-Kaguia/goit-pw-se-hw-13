@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "contacts-api"
+version = "0.1.0"
+description = "Contacts REST API"
+authors = ["Nataliia <moon.kaguia@gmail.com>"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.0"
+uvicorn = {extras = ["standard"], version = "^0.30.0"}
+sqlalchemy = "^2.0.36"
+psycopg = { extras = ["binary"], version = "^3.1" }
+python-jose = "^3.3.0"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+python-dotenv = "^1.0.1"
+email-validator = "^2.2.0"
+fastapi-limiter = "^0.1.6"
+redis = "^5.0.8"
+cloudinary = "^1.41.0"
+python-multipart = "^0.0.9"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
